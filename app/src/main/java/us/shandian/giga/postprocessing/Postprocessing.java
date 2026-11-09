@@ -10,6 +10,7 @@ import org.schabi.newpipe.streams.io.SharpStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.security.SecureRandom;
 
 import us.shandian.giga.get.DownloadMission;
 import us.shandian.giga.io.ChunkFileInputStream;
@@ -92,7 +93,7 @@ public abstract class Postprocessing implements Serializable {
     }
 
     public void setTemporalDir(@NonNull File directory) {
-        long rnd = (int) (Math.random() * 100000.0f);
+        long rnd = new SecureRandom().nextInt(100000);
         tempFile = new File(directory, rnd + "_" + System.nanoTime() + ".tmp");
     }
 
